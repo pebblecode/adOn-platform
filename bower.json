@@ -1,0 +1,20 @@
+{
+  "name": "adon-platform",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/pebblecode/adOn-platform",
+  "authors": [
+    "Tane Piper <piper.tane@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1"
+  }
+}

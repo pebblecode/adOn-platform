@@ -1,0 +1,26 @@
+extends default
+
+block pagecss
+  link(rel="stylesheet", href="/css/signin.css")
+
+block content
+  div.container-fluid
+    form.form-signin(action="/signup", method="post", role="form")
+      fieldset
+        legend
+          h3.form-signin-heading Signup
+
+        div.form-container
+          label(for="username") Email
+          input#username.form-control(type="email", name="username", placeholder="your@email.com", required, autofocus)
+
+        div.form-container
+          label(for="password") Password
+          input#password.form-control(type="password", name="password", placeholder="Your password", required)
+
+        div.form-container
+          label(for="confirm-password") Confirm Password
+          input#confirm-password.form-control(type="password", name="confirmPassword", placeholder="Confirm password", required)
+
+        div.form-container
+          button.btn.btn-lg.btn-primary.btn-block(type="submit") Signup

@@ -1,0 +1,15 @@
+extends default
+
+block pagecss
+  link(rel="stylesheet", href="/css/dashboard.css")
+
+block content
+
+  include includes/dashboard-nav
+
+  div.container-fluid
+    div.row
+      include includes/dashboard-sidebar
+
+      div.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        h1.page-header Dashboard

@@ -17,6 +17,23 @@ var options = {
       port: 8001,
       files: {
         relativeTo: __dirname + '/public'
+      },
+      plugins: {
+        yar: {
+          cookieOptions: {
+            password: 'adon-platform', // cookie secret
+            isSecure: false // required for non-https applications
+          }
+        },
+        travelogue: {
+          hostname: '0.0.0.0',
+          port: 8001,
+          urls: {
+            failureRedirect: '/login',
+            successRedirect: '/dashboard',
+            failureFlash: true
+          }
+        }
       }
     }
   },
