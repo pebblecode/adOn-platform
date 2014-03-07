@@ -4,7 +4,8 @@
   "description": "The AdOn Service Platform",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sync": "node scripts/sync.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,16 @@
   "bugs": {
     "url": "https://github.com/pebblecode/adOn-platform/issues"
   },
-  "homepage": "https://github.com/pebblecode/adOn-platform"
+  "homepage": "https://github.com/pebblecode/adOn-platform",
+  "dependencies": {
+    "hapi": "^2.6.0",
+    "confidence": "^0.12.0",
+    "rethinkdb": "^1.11.0-4",
+    "sequelize": "^1.7.0",
+    "pg": "^2.11.1",
+    "async": "^0.2.10",
+    "bcrypt": "^0.7.7",
+    "handlebars": "^2.0.0-alpha.2",
+    "passport-local": "^0.1.6"
+  }
 }
