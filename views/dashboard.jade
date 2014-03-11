@@ -4,12 +4,19 @@ block pagecss
   link(rel="stylesheet", href="/css/dashboard.css")
 
 block content
-
   include includes/dashboard-nav
 
   div.container-fluid
-    div.row
-      include includes/dashboard-sidebar
+    div.row(ui-view)
 
-      div.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
-        h1.page-header Dashboard
+block scripts
+  script(src="/vendor/angular/angular.js")
+  script(src="/vendor/angular-ui-router/release/angular-ui-router.js")
+
+  script(src="/app/index.js")
+  script(src="/app/controllers/ClientCtrl.js")
+  script(src="/app/controllers/ProjectCtrl.js")
+  script(src="/app/controllers/DashboardCtrl.js")
+
+  script(src="/app/services/Clients.js")
+  script(src="/app/services/Projects.js")

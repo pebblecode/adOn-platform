@@ -11,8 +11,10 @@ html(lang="en")
 
     block pagecss
 
-  body
+  body(ng-app="adon")
     block content
 
     script(src="/vendor/jquery/dist/jquery.js")
     script(src="/vendor/bootstrap/dist/js/bootstrap.js")
+
+    block scripts

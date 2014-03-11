@@ -1,0 +1,10 @@
+<div class="col-sm-3 col-md-2.sidebar">
+  <ul class="nav nav-sidebar">
+    <li ng-repeat="client in clients">
+      <a href="/client/{{client.id}}">{{client.name}}</a>
+    </li>
+    <li>
+      <a href="/client/add">Add Client</a>
+    </li>
+  </ul>
+</div>

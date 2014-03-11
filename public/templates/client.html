@@ -1,0 +1,10 @@
+<div class="well">
+  <h3>{{client.name}}</h3>
+
+  <h4>Projects</h4>
+  <ul>
+    <li ng-repeat="project in client.projects">
+      <a href="#/project/{{project.id}}">{{project.name}}</a>
+    </li>
+  </ul>
+</div>
