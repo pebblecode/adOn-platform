@@ -5,9 +5,29 @@ angular.module('adon')
   '$http',
   '$q',
   '$timeout',
+  '$stateParams',
   'projectItem',
-  function($scope, $rootScope, $http, $q, $timeout, projectItem) {
+  'Projects',
+  function($scope, $rootScope, $http, $q, $timeout, $stateParams, projectItem, Projects) {
 
     $scope.project = projectItem;
+
+    $scope.save = function() {
+      Projects.save($scope.project, $stateParams.cid)
+      .then(function(project) {
+        $rootScope.emit('projectSave', project);
+        $location.path('/project/' + project.id);
+      })
+    };
+
+    $scope.del = function() {
+      var confirm = $window.confirm('Do you wish to delete this project?');
+      if (confirm) {
+        Projects.delete($scope.project)
+        .then(function() {
+          $location.path('/dashboard');
+        })
+      }
+    };
   }
 ]);

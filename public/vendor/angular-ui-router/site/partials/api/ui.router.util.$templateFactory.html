@@ -5,11 +5,11 @@
 <div><h2 id="Description">Description</h2>
 <div class="description"><p>Service. Manages loading of templates.</p></div>
 <h2 id="Dependencies">Dependencies</h2>
-<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/api/ng.$http">$http</a></code>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/ng.$http">$http</a></code>
 </li>
-<li><code ng:non-bindable=""><a href="#/api/ng.$templateCache">$templateCache</a></code>
+<li><code ng:non-bindable=""><a href="#/ng.$templateCache">$templateCache</a></code>
 </li>
-<li><code ng:non-bindable=""><a href="#/api/ng.$injector">$injector</a></code>
+<li><code ng:non-bindable=""><a href="#/ng.$injector">$injector</a></code>
 </li>
 </ul>
 <div class="member method"><h2 id="Methods">Methods</h2>
@@ -21,13 +21,13 @@ The following properties are search in the specified order, and the first one
 that is defined is used to create the template:</p></li>
 <li><code ng:non-bindable="">config.template – {string|object} – </code>
 <p>html string template or function to 
-load via <a href="#/api/ui.router.util.$templateFactory#fromString">fromString</a>.</p></li>
+load via <a href="#/ui.router.util.$templateFactory#fromString">fromString</a>.</p></li>
 <li><code ng:non-bindable="">config.templateUrl – {string|object} – </code>
 <p>url to load or a function returning 
-the url to load via <a href="#/api/ui.router.util.$templateFactory#fromUrl">fromUrl</a>.</p></li>
+the url to load via <a href="#/ui.router.util.$templateFactory#fromUrl">fromUrl</a>.</p></li>
 <li><code ng:non-bindable="">config.templateProvider – {Function} – </code>
 <p>function to invoke via 
-<a href="#/api/ui.router.util.$templateFactory#fromProvider">fromProvider</a>.</p></li>
+<a href="#/ui.router.util.$templateFactory#fromProvider">fromProvider</a>.</p></li>
 <li><code ng:non-bindable="">params – {object} – </code>
 <p>Parameters to pass to the template function.</p></li>
 <li><code ng:non-bindable="">locals – {object} – </code>

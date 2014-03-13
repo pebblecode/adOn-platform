@@ -232,7 +232,7 @@ docsApp.serviceFactory.openJsFiddle = function(templateMerge, formPostData, load
       prop.css += file.content;
     });
 
-    formPostData("http://jsfiddle.net/api/post/library/pure/dependencies/more/", {
+    formPostData("http://jsfiddle.net/post/library/pure/dependencies/more/", {
       title: 'AngularJS Example',
       html: templateMerge(HTML, prop),
       js: prop.script,
@@ -263,7 +263,7 @@ docsApp.serviceFactory.sections = function serviceFactory() {
   angular.forEach(NG_DOCS.pages, function(page) {
     var url = page.section + '/' +  page.id;
     if (page.id == 'angular.Module') {
-      page.partialUrl = 'partials/api/angular.IModule.html';
+      page.partialUrl = 'partials/angular.IModule.html';
     } else {
       page.partialUrl = 'partials/' + url.replace(':', '.') + '.html';
     }

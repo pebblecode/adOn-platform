@@ -7,17 +7,17 @@
 between them. It also provides interfaces to ask for current state or even states
 you're coming from.</p></div>
 <h2 id="Dependencies">Dependencies</h2>
-<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/api/ng.$rootScope">$rootScope</a></code>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/ng.$rootScope">$rootScope</a></code>
 </li>
-<li><code ng:non-bindable=""><a href="#/api/ng.$q">$q</a></code>
+<li><code ng:non-bindable=""><a href="#/ng.$q">$q</a></code>
 </li>
-<li><code ng:non-bindable=""><a href="#/api/ui.router.state.$view">$view</a></code>
+<li><code ng:non-bindable=""><a href="#/ui.router.state.$view">$view</a></code>
 </li>
-<li><code ng:non-bindable=""><a href="#/api/ng.$injector">$injector</a></code>
+<li><code ng:non-bindable=""><a href="#/ng.$injector">$injector</a></code>
 </li>
-<li><code ng:non-bindable=""><a href="#/api/ui.router.util.$resolve">$resolve</a></code>
+<li><code ng:non-bindable=""><a href="#/ui.router.util.$resolve">$resolve</a></code>
 </li>
-<li><code ng:non-bindable=""><a href="#/api/ui.router.state.$stateParams">$stateParams</a></code>
+<li><code ng:non-bindable=""><a href="#/ui.router.state.$stateParams">$stateParams</a></code>
 </li>
 </ul>
 <div class="member method"><h2 id="Methods">Methods</h2>
@@ -110,7 +110,7 @@ $state.includes("about"); // returns false
 </div>
 </li>
 <li><h3 id="is">is(stateName, params)</h3>
-<div class="is"><p>Similar to <a href="#/api/ui.router.state.$state#methods_includes">$state.includes</a>,
+<div class="is"><p>Similar to <a href="#/ui.router.state.$state#methods_includes">$state.includes</a>,
 but only checks for the full state name. If params is supplied then it will be 
 tested for strict equality against the current active params object, so all params 
 must match with none missing and no extras.</p><h4 id="Parameters">Parameters</h4>
@@ -144,7 +144,7 @@ app.controller('ctrl', function ($state) {
 </div>
 </li>
 <li><h3 id="transitionTo">transitionTo(to, params, options)</h3>
-<div class="transitionto"><p>Low-level method for transitioning to a new state. <a href="#/api/ui.router.state.$state#methods_go">$state.go</a>
+<div class="transitionto"><p>Low-level method for transitioning to a new state. <a href="#/ui.router.state.$state#methods_go">$state.go</a>
 uses <code>transitionTo</code> internally. <code>$state.go</code> is recommended in most situations.</p><h4 id="Parameters">Parameters</h4>
 <ul class="parameters"><li><code ng:non-bindable="">to – {string} – </code>
 <p>Absolute State Name or Relative State Path.</p></li>
