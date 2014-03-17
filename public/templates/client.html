@@ -1,14 +1,23 @@
 <div class="well">
   <h3>{{client.name}}</h3>
 
-  <button class="btn btn-warning" ng-click="del()">Delete Client</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Campaign Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="project in client.projects">
+        <td><a href="#/project/{{project.id}}">{{project.name}}</a></td>
+        <td>{{project.campaignCount}}</td>
+      </tr>
+    </tbody>
+  </table>
 
-  <h4>Projects</h4>
-  <ul>
-    <li ng-repeat="project in client.projects">
-      <a href="#/project/{{project.id}}">{{project.name}}</a>
-    </li>
-  </ul>
-
-  <a href="#/project/new?cid={{client.id}}">New Project</a>
+  <div class="btn-group">
+    <button class="btn btn-warning" ng-click="del()">Delete Client</button>
+    <a href="#/project/new?cid={{client.id}}" class="btn btn-primary">New Project</a>
+  </div>
 </div>

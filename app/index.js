@@ -54,6 +54,29 @@ angular.module('adon', ['ui.router'])
           return Projects.getOne($stateParams.pid);
         }]
       }
+    })
+    .state('dashboard.addCampaign', {
+      url: '/campaign/new?pid',
+      templateUrl: '/templates/campaign-edit.html',
+      controller: 'CampaignCtrl',
+      resolve: {
+        campaignItem: function() {
+          return {
+            name: '',
+            projectId: null
+          };
+        }
+      }
+    })
+    .state('dashboard.campaign', {
+      url: '/campaign/:cid',
+      templateUrl: '/templates/campaign.html',
+      controller: 'CampaignCtrl',
+      resolve: {
+        campaignItem: ['Campaigns', '$stateParams', function(Campaigns, $stateParams) {
+          return Campaigns.getOne($stateParams.cid);
+        }]
+      }
     });
 }])
 .run(['$state', function($state) {

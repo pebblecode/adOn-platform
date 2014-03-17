@@ -11,10 +11,14 @@ angular.module('adon')
 
     $scope.clients = clientList;
 
-    $rootScope.$on('clientSave', function(client) {
-      $scope.clients = Clients.clients;
+    $rootScope.$on('clientSave', function(event, client) {
+      console.log(client, Clients.clientList());
+      $scope.clients = Clients.clientList();
     });
 
-
+    $rootScope.$on('clientDelete', function(event, clients) {
+      console.log(clients);
+      $scope.clients = clients;
+    });
   }
 ]);

@@ -28,8 +28,8 @@ angular.module('adon')
         var url = '/projects' + (project.id ? '/' + project.id : '');
         $http[method](url, project)
         .success(function(project) {
-          this.projects.push(project.data);
-          deferred.resolve(project.data);
+          this.projects.push(project);
+          deferred.resolve(project);
         }.bind(this))
         .error(function(error) {
           console.error(error);

@@ -6,16 +6,17 @@ angular.module('adon')
   '$q',
   '$timeout',
   '$stateParams',
+  '$location',
   'projectItem',
   'Projects',
-  function($scope, $rootScope, $http, $q, $timeout, $stateParams, projectItem, Projects) {
+  function($scope, $rootScope, $http, $q, $timeout, $stateParams, $location, projectItem, Projects) {
 
     $scope.project = projectItem;
 
     $scope.save = function() {
       Projects.save($scope.project, $stateParams.cid)
       .then(function(project) {
-        $rootScope.emit('projectSave', project);
+        $rootScope.$emit('projectSave', project);
         $location.path('/project/' + project.id);
       })
     };
@@ -25,7 +26,7 @@ angular.module('adon')
       if (confirm) {
         Projects.delete($scope.project)
         .then(function() {
-          $location.path('/dashboard');
+          $location.path('/campaign/' + $scope.project.campaignId);
         })
       }
     };

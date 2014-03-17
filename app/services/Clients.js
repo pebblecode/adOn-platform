@@ -7,6 +7,10 @@ angular.module('adon')
 
       this.clients = [];
 
+      this.clientList = function() {
+        return this.clients;
+      }.bind(this);
+
       this.get = function() {
         return $http.get('/clients').then(function(clients) {
           this.clients = clients.data;
@@ -28,19 +32,21 @@ angular.module('adon')
         }.bind(this));
       }.bind(this);
 
-      this.save = function(client) {
+      this.save = function(client, projectId) {
         var deferred = $q.defer();
+
+        client.projectId = projectId;
 
         var method = client.id ? 'post' : 'put'
         var url = '/clients' + (client.id ? '/' + client.id : '');
         $http[method](url, client)
         .success(function(client) {
-          this.clients.push(client.data);
-          deferred.resolve(client.data);
+          this.clients.push(client);
+          return deferred.resolve(client, this.clients);
         }.bind(this))
         .error(function(error) {
           console.error(error);
-          deferred.reject(error);
+          return deferred.reject(error);
         });
 
         return deferred.promise;
@@ -51,13 +57,14 @@ angular.module('adon')
         var deferred = $q.defer();
 
         var index = this.clients.indexOf(client);
+
         $http.delete('/clients/' + client.id)
         .success(function() {
           this.clients.splice(index, 1);
-          deferred.resolve();
+          return deferred.resolve(this.clients);
         }.bind(this))
         .error(function(error) {
-          deferred.reject(error);
+          return deferred.reject(error);
         });
 
         return deferred.promise;

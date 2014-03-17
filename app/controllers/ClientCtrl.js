@@ -15,8 +15,9 @@ angular.module('adon')
 
     $scope.save = function() {
       Clients.save($scope.client)
-      .then(function(client) {
-        $rootScope.emit('clientSave', client);
+      .then(function(client, clients) {
+        console.log(client, clients);
+        $rootScope.$emit('clientSave', client);
         $location.path('/client/' + client.id);
       })
     };
@@ -25,8 +26,9 @@ angular.module('adon')
       var confirm = $window.confirm('Do you wish to delete this client?');
       if (confirm) {
         Clients.delete($scope.client)
-        .then(function(client) {
-          $location.path('/dashboard');
+        .then(function(clients) {
+          $rootScope.$emit('clientDelete', clients);
+          $location.path('/');
         })
       }
     };

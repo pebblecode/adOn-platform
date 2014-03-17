@@ -5,7 +5,7 @@ angular.module('adon')
     '$q',
     function($rootScope, $http, $q) {
 
-      this.projects = [];
+      this.campaigns = [];
 
       this.get = function() {
         return $http.get('/campaigns').then(function(campaigns) {
@@ -19,17 +19,17 @@ angular.module('adon')
         });
       };
 
-      this.save = function(campaign, clientId) {
+      this.save = function(campaign, projectId) {
         var deferred = $q.defer();
 
-        campaign.clientId = clientId;
+        campaign.projectId = projectId;
 
         var method = campaign.id ? 'post' : 'put'
         var url = '/campaigns' + (campaign.id ? '/' + campaign.id : '');
         $http[method](url, campaign)
         .success(function(campaign) {
-          this.campaigns.push(campaign.data);
-          deferred.resolve(campaign.data);
+          this.campaigns.push(campaign);
+          deferred.resolve(campaign);
         }.bind(this))
         .error(function(error) {
           console.error(error);

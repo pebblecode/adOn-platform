@@ -7,16 +7,17 @@ angular.module('adon')
   '$timeout',
   '$location',
   '$window',
-  'clientItem',
+  'campaignItem',
   'Campaigns',
-  function($scope, $rootScope, $http, $q, $timeout, $location, $window, clientItem, Campaigns) {
+  '$stateParams',
+  function($scope, $rootScope, $http, $q, $timeout, $location, $window, campaignItem, Campaigns, $stateParams) {
 
-    $scope.client = clientItem;
+    $scope.campaign = campaignItem;
 
     $scope.save = function() {
-      Campaigns.save($scope.client)
-      .then(function(client) {
-        $rootScope.emit('campaignSave', campaign);
+      Campaigns.save($scope.campaign, $stateParams.pid)
+      .then(function(campaign) {
+        $rootScope.$emit('campaignSave', campaign);
         $location.path('/campaign/' + campaign.id);
       })
     };
@@ -26,7 +27,7 @@ angular.module('adon')
       if (confirm) {
         Campaigns.delete($scope.campaign)
         .then(function(campaign) {
-          $location.path('/dashboard');
+          $location.path('/project/' + $scope.campaign.projectId);
         })
       }
     };

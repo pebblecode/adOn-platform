@@ -1,0 +1,20 @@
+<div class="well">
+  <h3><a href="#/project/{{campaign.project.id}}">{{campaign.project.name}}</a> &raquo; {{campaign.name}}</h3>
+
+  <table class="table">
+    <tbody>
+      <tr>
+        <th scope="row">Shortcode</th>
+        <td>{{campaign.shortcode}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Redirect URL</th>
+        <td>{{campaign.url}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="btn-group">
+    <button class="btn btn-warning" ng-click="del()">Delete Campaign</button>
+  </div>
+</div>
