@@ -1,8 +1,13 @@
+var async = require('async');
 var Instance = {};
 
-require('./../lib/db.js')(Instance);
+require('./../lib/db')(Instance);
 
-Instance.db.User.sync();
-Instance.db.Client.sync();
-Instance.db.Project.sync();
-Instance.db.Campaign.sync();
+
+Instance.db.User.sync().done(function() {
+  Instance.db.Client.sync().done(function() {
+    Instance.db.Project.sync().done(function() {
+      Instance.db.Campaign.sync();
+    })
+  })
+});
