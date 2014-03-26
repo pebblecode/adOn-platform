@@ -1,6 +1,8 @@
 <div class="well">
   <h3><a href="#/client/{{project.client.id}}">{{project.client.name}}</a> &raquo; {{project.name}}</h3>
 
+  <p>{{project.description}}</p>
+
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -20,6 +22,7 @@
 
   <div class="btn-group">
     <button class="btn btn-warning" ng-click="del()">Delete Project</button>
+    <a href="#/project/{{project.id}}/edit" class="btn btn-primary">Edit Project</a>
     <a href="#/campaign/new?pid={{project.id}}" class="btn btn-primary">New Campaign</a>
   </div>
 </div>

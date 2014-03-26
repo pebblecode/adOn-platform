@@ -22,6 +22,16 @@ angular.module('adon', ['ui.router'])
         }
       }
     })
+    .state('dashboard.editClient', {
+      url: '/client/:cid/edit',
+      templateUrl: '/templates/client-edit.html',
+      controller: 'ClientCtrl',
+      resolve: {
+        clientItem: ['Clients', '$stateParams', function(Clients, $stateParams) {
+          return Clients.getOne($stateParams.cid);
+        }]
+      }
+    })
     .state('dashboard.client', {
       url: '/client/:cid',
       templateUrl: '/templates/client.html',
@@ -45,6 +55,16 @@ angular.module('adon', ['ui.router'])
         }
       }
     })
+    .state('dashboard.editProject', {
+      url: '/project/:pid/edit',
+      templateUrl: '/templates/project-edit.html',
+      controller: 'ProjectCtrl',
+      resolve: {
+        projectItem: ['Projects', '$stateParams', function(Projects, $stateParams) {
+          return Projects.getOne($stateParams.pid);
+        }]
+      }
+    })
     .state('dashboard.project', {
       url: '/project/:pid',
       templateUrl: '/templates/project.html',
@@ -66,6 +86,16 @@ angular.module('adon', ['ui.router'])
             projectId: null
           };
         }
+      }
+    })
+    .state('dashboard.editCampaign', {
+      url: '/campaign/:cid/edit',
+      templateUrl: '/templates/campaign-edit.html',
+      controller: 'CampaignCtrl',
+      resolve: {
+        campaignItem: ['Campaigns', '$stateParams', function(Campaigns, $stateParams) {
+          return Campaigns.getOne($stateParams.cid);
+        }]
       }
     })
     .state('dashboard.campaign', {

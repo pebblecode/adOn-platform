@@ -22,14 +22,23 @@ angular.module('adon')
       this.save = function(project, clientId) {
         var deferred = $q.defer();
 
-        project.clientId = clientId;
+        var payload = {
+          name: project.name,
+          description: project.description,
+          isActive: project.isActive,
+          clientId: clientId
+        };
 
         var method = project.id ? 'post' : 'put'
         var url = '/projects' + (project.id ? '/' + project.id : '');
-        $http[method](url, project)
-        .success(function(project) {
-          this.projects.push(project);
-          deferred.resolve(project);
+        $http[method](url, payload)
+        .success(function(updatedProject) {
+          if (project.id) {
+            this.projects.splice(this.projects.indexOf(project), 1, updatedProject);
+          } else {
+            this.projects.push(updatedProject);
+          }
+          deferred.resolve(updatedProject);
         }.bind(this))
         .error(function(error) {
           console.error(error);

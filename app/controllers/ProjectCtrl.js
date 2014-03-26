@@ -11,7 +11,7 @@ angular.module('adon')
   'Projects',
   function($scope, $rootScope, $http, $q, $timeout, $stateParams, $location, projectItem, Projects) {
 
-    $scope.project = projectItem;
+    $scope.project = projectItem || {};
 
     $scope.save = function() {
       Projects.save($scope.project, $stateParams.cid)

@@ -11,12 +11,11 @@ angular.module('adon')
   'Clients',
   function($scope, $rootScope, $http, $q, $timeout, $location, $window, clientItem, Clients) {
 
-    $scope.client = clientItem;
+    $scope.client = clientItem || {};
 
     $scope.save = function() {
       Clients.save($scope.client)
       .then(function(client, clients) {
-        console.log(client, clients);
         $rootScope.$emit('clientSave', client);
         $location.path('/client/' + client.id);
       })

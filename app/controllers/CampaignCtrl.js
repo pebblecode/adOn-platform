@@ -12,7 +12,7 @@ angular.module('adon')
   '$stateParams',
   function($scope, $rootScope, $http, $q, $timeout, $location, $window, campaignItem, Campaigns, $stateParams) {
 
-    $scope.campaign = campaignItem;
+    $scope.campaign = campaignItem || {};
 
     $scope.save = function() {
       Campaigns.save($scope.campaign, $stateParams.pid)

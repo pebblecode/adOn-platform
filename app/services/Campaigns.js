@@ -22,14 +22,25 @@ angular.module('adon')
       this.save = function(campaign, projectId) {
         var deferred = $q.defer();
 
-        campaign.projectId = projectId;
+        var payload = {
+          name: campaign.name,
+          description: campaign.description,
+          shortcode: campaign.shortcode,
+          url: campaign.url,
+          isActive: campaign.isActive,
+          projectId: projectId
+        };
 
         var method = campaign.id ? 'post' : 'put'
         var url = '/campaigns' + (campaign.id ? '/' + campaign.id : '');
-        $http[method](url, campaign)
-        .success(function(campaign) {
-          this.campaigns.push(campaign);
-          deferred.resolve(campaign);
+        $http[method](url, payload)
+        .success(function(updatedCampaign) {
+          if (campaign.id) {
+            this.campaigns.splice(this.campaigns.indexOf(campaign), 1, updatedCampaign);
+          } else {
+            this.campaigns.push(updatedCampaign);
+          }
+          deferred.resolve(updatedCampaign);
         }.bind(this))
         .error(function(error) {
           console.error(error);
