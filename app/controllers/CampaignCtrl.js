@@ -35,5 +35,21 @@ angular.module('adon')
         });
       }
     };
+
+    $scope.generateShortcode = function(length) {
+      length = length || 8;
+
+      var shortcode = (new Array(length + 1).join((Math.random().toString(36) + '00000000000000000').slice(2, 18)).slice(0, length)).split('');
+
+      var lastchar = null;
+      for (var i = 0, j = shortcode.length; i < j; i++) {
+        if (shortcode[i] == lastchar) {
+          shortcode[i] = String.fromCharCode(shortcode[i].charCodeAt(0) + 1);
+        }
+        lastchar = shortcode[i];
+      }
+
+      $scope.campaign.shortcode = shortcode.join('');
+    }
   }
 ]);
