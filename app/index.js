@@ -5,8 +5,8 @@ angular.module('adon', ['ui.router'])
     .state('dashboard', {
       templateUrl: '/templates/dashboard.html', controller: 'DashboardCtrl',
       resolve: {
-        clientList: ['Clients', function(Clients) {
-          return Clients.get();
+        clientList: ['CRUD', function(CRUD) {
+          return CRUD.get('clients');
         }]
       }
     })
@@ -27,8 +27,8 @@ angular.module('adon', ['ui.router'])
       templateUrl: '/templates/client-edit.html',
       controller: 'ClientCtrl',
       resolve: {
-        clientItem: ['Clients', '$stateParams', function(Clients, $stateParams) {
-          return Clients.getOne($stateParams.cid);
+        clientItem: ['CRUD', '$stateParams', function(CRUD, $stateParams) {
+          return CRUD.getOne('client', $stateParams.cid);
         }]
       }
     })
@@ -37,8 +37,8 @@ angular.module('adon', ['ui.router'])
       templateUrl: '/templates/client.html',
       controller: 'ClientCtrl',
       resolve: {
-        clientItem: ['Clients', '$stateParams', function(Clients, $stateParams) {
-          return Clients.getOne($stateParams.cid);
+        clientItem: ['CRUD', '$stateParams', function(CRUD, $stateParams) {
+          return CRUD.getOne('client', $stateParams.cid);
         }]
       }
     })
@@ -60,8 +60,8 @@ angular.module('adon', ['ui.router'])
       templateUrl: '/templates/project-edit.html',
       controller: 'ProjectCtrl',
       resolve: {
-        projectItem: ['Projects', '$stateParams', function(Projects, $stateParams) {
-          return Projects.getOne($stateParams.pid);
+        projectItem: ['CRUD', '$stateParams', function(CRUD, $stateParams) {
+          return CRUD.getOne('project', $stateParams.pid);
         }]
       }
     })
@@ -70,8 +70,8 @@ angular.module('adon', ['ui.router'])
       templateUrl: '/templates/project.html',
       controller: 'ProjectCtrl',
       resolve: {
-        projectItem: ['Projects', '$stateParams', function(Projects, $stateParams) {
-          return Projects.getOne($stateParams.pid);
+        projectItem: ['CRUD', '$stateParams', function(CRUD, $stateParams) {
+          return CRUD.getOne('project', $stateParams.pid);
         }]
       }
     })
@@ -93,8 +93,8 @@ angular.module('adon', ['ui.router'])
       templateUrl: '/templates/campaign-edit.html',
       controller: 'CampaignCtrl',
       resolve: {
-        campaignItem: ['Campaigns', '$stateParams', function(Campaigns, $stateParams) {
-          return Campaigns.getOne($stateParams.cid);
+        campaignItem: ['CRUD', '$stateParams', function(CRUD, $stateParams) {
+          return CRUD.getOne('campaign', $stateParams.cid);
         }]
       }
     })
@@ -103,8 +103,8 @@ angular.module('adon', ['ui.router'])
       templateUrl: '/templates/campaign.html',
       controller: 'CampaignCtrl',
       resolve: {
-        campaignItem: ['Campaigns', '$stateParams', function(Campaigns, $stateParams) {
-          return Campaigns.getOne($stateParams.cid);
+        campaignItem: ['CRUD', '$stateParams', function(CRUD, $stateParams) {
+          return CRUD.getOne('campaign', $stateParams.cid);
         }]
       }
     });

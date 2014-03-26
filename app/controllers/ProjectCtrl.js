@@ -2,19 +2,22 @@ angular.module('adon')
 .controller('ProjectCtrl', [
   '$scope',
   '$rootScope',
-  '$http',
-  '$q',
-  '$timeout',
-  '$stateParams',
   '$location',
+  '$window',
+  '$stateParams',
   'projectItem',
-  'Projects',
-  function($scope, $rootScope, $http, $q, $timeout, $stateParams, $location, projectItem, Projects) {
+  'CRUD',
+  function($scope, $rootScope, $location, $window, $stateParams, projectItem, CRUD) {
 
     $scope.project = projectItem || {};
 
     $scope.save = function() {
-      Projects.save($scope.project, $stateParams.cid)
+      CRUD.save('project', $scope.project.id, {
+        name: $scope.project.name,
+        description: $scope.project.description,
+        isActive: $scope.project.isActive,
+        clientId: $stateParams.cid
+      })
       .then(function(project) {
         $rootScope.$emit('projectSave', project);
         $location.path('/project/' + project.id);
@@ -24,9 +27,9 @@ angular.module('adon')
     $scope.del = function() {
       var confirm = $window.confirm('Do you wish to delete this project?');
       if (confirm) {
-        Projects.delete($scope.project)
+        CRUD.delete('project', $scope.project.id)
         .then(function() {
-          $location.path('/campaign/' + $scope.project.campaignId);
+          $location.path('/client/' + $scope.project.clientId);
         })
       }
     };

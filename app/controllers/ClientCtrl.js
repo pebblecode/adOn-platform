@@ -2,20 +2,22 @@ angular.module('adon')
 .controller('ClientCtrl', [
   '$scope',
   '$rootScope',
-  '$http',
-  '$q',
-  '$timeout',
   '$location',
   '$window',
   'clientItem',
-  'Clients',
-  function($scope, $rootScope, $http, $q, $timeout, $location, $window, clientItem, Clients) {
+  'CRUD',
+  function($scope, $rootScope, $location, $window, clientItem, CRUD) {
 
     $scope.client = clientItem || {};
 
     $scope.save = function() {
-      Clients.save($scope.client)
-      .then(function(client, clients) {
+      CRUD.save('client', $scope.client.id, {
+        name: $scope.client.name,
+        slug: $scope.client.slug,
+        description: $scope.client.description,
+        isActive: $scope.client.isActive
+      })
+      .then(function(client) {
         $rootScope.$emit('clientSave', client);
         $location.path('/client/' + client.id);
       })
@@ -24,9 +26,9 @@ angular.module('adon')
     $scope.del = function() {
       var confirm = $window.confirm('Do you wish to delete this client?');
       if (confirm) {
-        Clients.delete($scope.client)
-        .then(function(clients) {
-          $rootScope.$emit('clientDelete', clients);
+        CRUD.delete('client', $scope.client.id)
+        .then(function() {
+          $rootScope.$emit('clientDelete', $scope.client.id);
           $location.path('/');
         })
       }
