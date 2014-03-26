@@ -16,9 +16,7 @@ angular.module('adon', ['ui.router'])
       controller: 'ClientCtrl',
       resolve: {
         clientItem: function() {
-          return {
-            name: ''
-          };
+          return {};
         }
       }
     })
@@ -48,10 +46,7 @@ angular.module('adon', ['ui.router'])
       controller: 'ProjectCtrl',
       resolve: {
         projectItem: function() {
-          return {
-            name: '',
-            clientId: null
-          };
+          return {};
         }
       }
     })
@@ -81,10 +76,7 @@ angular.module('adon', ['ui.router'])
       controller: 'CampaignCtrl',
       resolve: {
         campaignItem: function() {
-          return {
-            name: '',
-            projectId: null
-          };
+          return {};
         }
       }
     })
@@ -110,5 +102,5 @@ angular.module('adon', ['ui.router'])
     });
 }])
 .run(['$state', function($state) {
-  $state.transitionTo('dashboard');
+  $state.go('dashboard');
 }]);

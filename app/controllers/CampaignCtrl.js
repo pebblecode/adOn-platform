@@ -2,12 +2,12 @@ angular.module('adon')
 .controller('CampaignCtrl', [
   '$scope',
   '$rootScope',
-  '$location',
   '$window',
   '$stateParams',
   'campaignItem',
   'CRUD',
-  function($scope, $rootScope, $location, $window, $stateParams, campaignItem, CRUD) {
+  '$state',
+  function($scope, $rootScope, $window, $stateParams, campaignItem, CRUD, $state) {
 
     $scope.campaign = campaignItem || {};
 
@@ -22,7 +22,9 @@ angular.module('adon')
       })
       .then(function(campaign) {
         $rootScope.$emit('campaignSave', campaign);
-        $location.path('/campaign/' + campaign.id);
+        $state.go('dashboard.campaign', {
+          cid: campaign.id
+        });
       });
     };
 
@@ -31,7 +33,9 @@ angular.module('adon')
       if (confirm) {
         CRUD.delete('campaign', $scope.campaign.id)
         .then(function() {
-          $location.path('/project/' + $scope.campaign.projectId);
+          $state.go('dashboard.project', {
+            pid: $scope.campaign.projectId
+          });
         });
       }
     };

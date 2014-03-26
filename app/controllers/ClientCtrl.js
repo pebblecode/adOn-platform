@@ -2,11 +2,11 @@ angular.module('adon')
 .controller('ClientCtrl', [
   '$scope',
   '$rootScope',
-  '$location',
   '$window',
   'clientItem',
   'CRUD',
-  function($scope, $rootScope, $location, $window, clientItem, CRUD) {
+  '$state',
+  function($scope, $rootScope, $window, clientItem, CRUD, $state) {
 
     $scope.client = clientItem || {};
 
@@ -19,7 +19,7 @@ angular.module('adon')
       })
       .then(function(client) {
         $rootScope.$emit('clientSave', client);
-        $location.path('/client/' + client.id);
+        $state.go('dashboard.client', { cid: client.id });
       })
     };
 
@@ -29,7 +29,7 @@ angular.module('adon')
         CRUD.delete('client', $scope.client.id)
         .then(function() {
           $rootScope.$emit('clientDelete', $scope.client.id);
-          $location.path('/');
+          $state.go('dashboard');
         })
       }
     };

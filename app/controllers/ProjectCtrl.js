@@ -2,12 +2,12 @@ angular.module('adon')
 .controller('ProjectCtrl', [
   '$scope',
   '$rootScope',
-  '$location',
   '$window',
   '$stateParams',
   'projectItem',
   'CRUD',
-  function($scope, $rootScope, $location, $window, $stateParams, projectItem, CRUD) {
+  '$state',
+  function($scope, $rootScope, $window, $stateParams, projectItem, CRUD, $state) {
 
     $scope.project = projectItem || {};
 
@@ -20,8 +20,10 @@ angular.module('adon')
       })
       .then(function(project) {
         $rootScope.$emit('projectSave', project);
-        $location.path('/project/' + project.id);
-      })
+        $state.go('dashboard.project', {
+          pid: project.id
+        });
+      });
     };
 
     $scope.del = function() {
@@ -29,8 +31,10 @@ angular.module('adon')
       if (confirm) {
         CRUD.delete('project', $scope.project.id)
         .then(function() {
-          $location.path('/client/' + $scope.project.clientId);
-        })
+          $state.go('dashboard.client', {
+            cid: $scope.project.clientId
+          });
+        });
       }
     };
   }
