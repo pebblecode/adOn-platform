@@ -40,17 +40,13 @@ var options = {
   database: {
     $filter: 'env',
     production: {
-      mongo: {
-        connectionString: process.env.MONGOLAB_URI
+      postgres: {
+        connectionString: process.env.HEROKU_POSTGRESQL_ROSE_URL
       }
     },
     $default: {
-      mongo: {
-        connectionString: 'mongodb://localhost:27017/az-smartshare'
-      },
-      rethink: {
-        host: 'localhost',
-        port: 28015
+      postgres:{
+        connectionString: 'postgres://development:dev@localhost/adon-platform'
       }
     }
   }

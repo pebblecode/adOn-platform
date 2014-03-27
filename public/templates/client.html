@@ -12,7 +12,7 @@
     <tbody>
       <tr ng-repeat="project in client.projects">
         <td><a href="#/project/{{project.id}}">{{project.name}}</a></td>
-        <td>{{project.campaignCount}}</td>
+        <td>{{project.campaigns.length}}</td>
       </tr>
     </tbody>
   </table>
