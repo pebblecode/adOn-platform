@@ -1,7 +1,11 @@
 var async = require('async');
 var Instance = {
-  postgres: {
-    connectionString: process.env.HEROKU_POSTGRESQL_ROSE_URL || 'postgres://development:dev@localhost/adon-platform'
+  config: {
+    database: {
+      postgres: {
+        connectionString: process.env.HEROKU_POSTGRESQL_ROSE_URL || 'postgres://development:dev@localhost/adon-platform'
+      }
+    }
   }
 };
 
