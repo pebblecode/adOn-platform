@@ -6,7 +6,28 @@ var options = {
   server: {
     $filter: 'env',
     production: {
+      host: '0.0.0.0',
       port: process.env.PORT,
+      files: {
+        relativeTo: __dirname + '/public'
+      },
+      plugins: {
+        yar: {
+          cookieOptions: {
+            password: 'adon-platform', // cookie secret
+            isSecure: false // required for non-https applications
+          }
+        },
+        travelogue: {
+          hostname: '0.0.0.0',
+          port: process.env.PORT,
+          urls: {
+            failureRedirect: '/login',
+            successRedirect: '/dashboard',
+            failureFlash: true
+          }
+        }
+      }
     },
     $default: {
       host: '0.0.0.0',
