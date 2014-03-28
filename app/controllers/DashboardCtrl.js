@@ -7,7 +7,8 @@ angular.module('adon')
   '$timeout',
   'clientList',
   'CRUD',
-  function($scope, $rootScope, $http, $q, $timeout, clientList, CRUD) {
+  'Sender',
+  function($scope, $rootScope, $http, $q, $timeout, clientList, CRUD, Sender) {
 
     $scope.clients = clientList;
 
@@ -37,6 +38,10 @@ angular.module('adon')
       });
 
       $scope.clients.splice(deleteIndex, 1);
+    });
+
+    $rootScope.$on('playMessage', function(event, message) {
+      Sender.sendMessage(message);
     });
   }
 ]);

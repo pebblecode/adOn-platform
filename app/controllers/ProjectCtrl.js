@@ -37,5 +37,9 @@ angular.module('adon')
         });
       }
     };
+
+    $scope.sendMessage = function(message) {
+      $rootScope.$emit('playMessage', message);
+    };
   }
 ]);

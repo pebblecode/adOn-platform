@@ -7,7 +7,9 @@
     <tbody>
       <tr>
         <th scope="row">Shortcode</th>
-        <td>{{campaign.shortcode}}</td>
+        <td>
+          <button class="btn" ng-click="sendMessage(campaign.shortcode)">{{campaign.shortcode}}</button>
+        </td>
       </tr>
       <tr>
         <th scope="row">Redirect URL</th>

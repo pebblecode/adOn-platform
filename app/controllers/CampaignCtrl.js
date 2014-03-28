@@ -7,7 +7,8 @@ angular.module('adon')
   'campaignItem',
   'CRUD',
   '$state',
-  function($scope, $rootScope, $window, $stateParams, campaignItem, CRUD, $state) {
+  'Sender',
+  function($scope, $rootScope, $window, $stateParams, campaignItem, CRUD, $state, Sender) {
 
     $scope.campaign = campaignItem || {};
 
@@ -54,6 +55,10 @@ angular.module('adon')
       }
 
       $scope.campaign.shortcode = shortcode.join('');
-    }
+    };
+
+    $scope.sendMessage = function(message) {
+      $rootScope.$emit('playMessage', message);
+    };
   }
 ]);

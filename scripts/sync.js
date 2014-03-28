@@ -16,6 +16,6 @@ Instance.db.User.sync().done(function() {
   Instance.db.Client.sync().done(function() {
     Instance.db.Project.sync().done(function() {
       Instance.db.Campaign.sync();
-    })
-  })
+    });
+  });
 });
