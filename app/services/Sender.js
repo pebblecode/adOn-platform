@@ -1,15 +1,22 @@
+var AudioContext = window.AudioContext || window.webkitAudioContext;
+
 angular.module('adon')
   .service('Sender', [
     '$rootScope',
     '$q',
     function($rootScope, $q) {
       var adOnSoundLib = require('./lib/index.js');
-      var sender = new adOnSoundLib.Sender({
-        codec: new adOnSoundLib.Codec({
-          characters: 'abcdefghijklmnopqrstuvwxyz0123456789'
-        })
+
+      var SoundTools = {};
+      SoundTools.context = new AudioContext();
+      SoundTools.codec = new adOnSoundLib.Codec({
+        characters: 'abcdefghijklmnopqrstuvwxyz0123456789'
       });
 
-      return sender;
+      SoundTools.sender = new adOnSoundLib.Sender({}, SoundTools.codec, SoundTools.context);
+
+      SoundTools.exporter = new adOnSoundLib.Export({}, SoundTools.codec, SoundTools.context)
+
+      return SoundTools;
     }
 ]);

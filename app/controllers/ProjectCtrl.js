@@ -41,5 +41,9 @@ angular.module('adon')
     $scope.sendMessage = function(message) {
       $rootScope.$emit('playMessage', message);
     };
+
+    $scope.exportMessage = function(message) {
+      $rootScope.$emit('exportMessage', message);
+    };
   }
 ]);
