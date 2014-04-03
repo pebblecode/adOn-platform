@@ -15,7 +15,7 @@ angular.module('adon')
 
       SoundTools.sender = new adOnSoundLib.Sender({}, SoundTools.codec, SoundTools.context);
 
-      SoundTools.exporter = new adOnSoundLib.Export({}, SoundTools.codec, SoundTools.context)
+      SoundTools.exporter = new adOnSoundLib.Export({playOutput: false}, SoundTools.codec, SoundTools.context)
 
       return SoundTools;
     }

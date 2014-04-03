@@ -43,7 +43,10 @@ angular.module('adon')
     };
 
     $scope.exportMessage = function(message) {
-      $rootScope.$emit('exportMessage', message);
+
+      $rootScope.$emit('exportMessage', message, function() {
+        console.log('done');
+      });
     };
   }
 ]);

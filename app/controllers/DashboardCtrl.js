@@ -44,7 +44,7 @@ angular.module('adon')
       Sender.sender.sendMessage(message);
     });
 
-    $rootScope.$on('exportMessage', function(event, message) {
+    $rootScope.$on('exportMessage', function(event, message, callback) {
       Sender.exporter.exportMessage(message);
 
       Sender.exporter.on('export', function(audioBlob) {
@@ -52,6 +52,7 @@ angular.module('adon')
          a.href = window.URL.createObjectURL(audioBlob);
          a.download = message + '.wav';
          a.click();
+         callback();
       });
     });
   }
