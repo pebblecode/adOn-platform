@@ -9,7 +9,7 @@
         <th scope="row">Shortcode</th>
         <td>
           <button class="btn" ng-click="sendMessage(campaign.shortcode)">{{campaign.shortcode}}</button>
-          <button class="btn" ng-click="exportMessage(campaign.shortcode)">Export</button>
+          <export shortcode="campaign.shortcode"></export>
         </td>
       </tr>
       <tr>
